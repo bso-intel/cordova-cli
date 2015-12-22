@@ -98,6 +98,7 @@ function cli(inputArgs) {
         , 'list': Boolean
         , 'buildConfig' : String
         , 'template' : String
+        , 'platforms-dir' : String  
         };
 
     var shortHands =
@@ -196,7 +197,8 @@ function cli(inputArgs) {
         silent: args.silent || false,
         browserify: args.browserify || false,
         nohooks: args.nohooks || [],
-        searchpath : args.searchpath
+        searchpath : args.searchpath,
+        platforms_dir : args['platforms-dir']
     };
 
     if (cmd == 'emulate' || cmd == 'build' || cmd == 'prepare' || cmd == 'compile' || cmd == 'run' || cmd === 'clean') {
@@ -316,6 +318,7 @@ function cli(inputArgs) {
                             , link: args.link || false
                             , save: args.save || false
                             , shrinkwrap: args.shrinkwrap || false
+                            , platforms_dir : args['platforms-dir']
                             };
         cordova.raw[cmd](subcommand, targets, download_opts).done();
     }
